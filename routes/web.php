@@ -20,18 +20,19 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::middleware(['auth'])->group(function() {
-    Route::resource('todos', 'TodosController');
-    // Route::resource('todos', 'TodosController', [
-    //     'only' => [
-    //         'index', 'store', 'update' 
-    //     ]
-    // ]);
+    Route::get('/approval', 'TodosController@approval')->name('approval');
 
 });
 
-Route::get('/admin', 'AdminController@admin')    
-    ->middleware('is_admin')    
-    ->name('admin');
+Route::middleware(['approved'])->group(function () {
+    Route::resource('todos', 'TodosController');
+});
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+Route::middleware(['admin'])->group(function () {
+    Route::get('/users', 'UserController@index')->name('admin.users.index');
+    Route::get('/users/{user_id}/approve', 'UserController@approve')->name('admin.users.approve');
+});
+
+//Route::get('/home', 'HomeController@index')->name('home');
 

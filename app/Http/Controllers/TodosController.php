@@ -15,6 +15,10 @@ class TodosController extends Controller
         $this->middleware('auth');
     }
 
+    public function approval()
+    {
+        return view('approval');
+    }
 
     /**
      * Display a listing of the resource.
