@@ -71,12 +71,6 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']), 
         ]);
-     
-        $admin = User::where('admin', 1)->first();
-
-        if ($admin) {           
-            $admin->notify(new NewUser($user));
-        }
         
         return $user;
 

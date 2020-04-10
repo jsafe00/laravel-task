@@ -8,6 +8,16 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
+    /**
+     * Set how many failed logins are allowed before being locked out.
+     */
+    public $maxAttempts = 3;
+
+    /**
+     * Set how many minutes a lockout will last.
+     */
+    public $decayMinutes = 5;
+    
     /*
     |--------------------------------------------------------------------------
     | Login Controller
