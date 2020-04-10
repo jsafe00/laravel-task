@@ -10,14 +10,14 @@ It might not be that much, but I know it can certainly help someone out there. F
 
 Set your .env mail: 
 
-MAIL_MAILER=smtp
-MAIL_HOST=smtp.gmail.com
-MAIL_PORT=465
-MAIL_USERNAME=(your_email)
-MAIL_PASSWORD=(your_email_password)
-MAIL_ENCRYPTION=ssl
-MAIL_FROM_ADDRESS=null
-MAIL_FROM_NAME="${APP_NAME}"
+MAIL_MAILER=smtp <br>
+MAIL_HOST=smtp.gmail.com <br>
+MAIL_PORT=465 <br>
+MAIL_USERNAME=(your_email) <br>
+MAIL_PASSWORD=(your_email_password) <br>
+MAIL_ENCRYPTION=ssl <br>
+MAIL_FROM_ADDRESS=null <br>
+MAIL_FROM_NAME="${APP_NAME}" 
 
-> composer install
-> php artisan migrate
+ composer install <br>
+ php artisan migrate
