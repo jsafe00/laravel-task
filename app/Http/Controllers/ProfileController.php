@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Traits\UploadTrait;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -25,8 +26,9 @@ class ProfileController extends Controller
     {
         // Form validation
         $request->validate([
-            'name'              =>  'required',
-            'profile_image'     =>  'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'name'              =>  'bail|sometimes|string|min:8',
+            'password'          =>  'bail|nullable|string|min:8|confirmed',
+            'profile_image'     =>  'bail|sometimes|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
         // Get current user
@@ -49,6 +51,17 @@ class ProfileController extends Controller
             // Set user profile image path in database to filePath
             $user->profile_image = $filePath;
         }
+
+        if (!is_null($request['password'])) {
+            $password = $request['password'];
+        
+            $request['password'] = Hash::make($password);
+            $request['password_length'] = strlen($password);
+
+            $user->password = $request['password'];
+        }
+          
+
         // Persist user record to database
         $user->save();
 
