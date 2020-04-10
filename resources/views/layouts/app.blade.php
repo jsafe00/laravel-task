@@ -46,25 +46,38 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
+                            
                         @else
+                             @if (Auth::user()->admin == 1)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/users">{{ __('Approve Users') }}</a>
+                                </li>
+                            @endif
+                            
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+                            <li class="nav-item">
+                                    <a class="nav-link" href="/todos">{{ __('ToDos') }}</a>
+                                </li>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                @if (auth()->user()->image)
+                                    <img src="{{ url('storage'.auth()->user()->image) }}" style="width: 40px; height: 40px; border-radius: 50%;">
+                                @endif
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                                                    
+                                    <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
                                 </div>
-                            </li>
+                            </li>                            
                         @endguest
                     </ul>
                 </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use Notification;
 use App\Notifications\NewUser;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -73,11 +74,13 @@ class RegisterController extends Controller
      
         $admin = User::where('admin', 1)->first();
 
-        // if ($admin) {           
-        //     $admin->notify(new NewUser($user));
-        // }
-
+        if ($admin) {           
+            $admin->notify(new NewUser($user));
+        }
+        
         return $user;
 
     }
+
+    
 }
