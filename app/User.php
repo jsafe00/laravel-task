@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'admin', 'approved_at'
+        'name', 'email', 'password', 'profile_image', 'admin', 'approved_at'
     ];
 
     /**
@@ -42,5 +42,10 @@ class User extends Authenticatable
     public function todos()
     {
         return $this->hasMany(Todos::class);
+    }
+
+    public function getImageAttribute()
+    {
+    return $this->profile_image;
     }
 }

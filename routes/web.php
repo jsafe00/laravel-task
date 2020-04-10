@@ -26,6 +26,10 @@ Route::middleware(['auth'])->group(function() {
 
 Route::middleware(['approved'])->group(function () {
     Route::resource('todos', 'TodosController');
+    Route::get('/profile', 'ProfileController@index')->name('profile');
+    Route::post('/profile/update', 'ProfileController@updateProfile')->name('profile.update');
+
+
 });
 
 

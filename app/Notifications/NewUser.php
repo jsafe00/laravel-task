@@ -12,16 +12,16 @@ class NewUser extends Notification
 {
     use Queueable;
 
-    private $user;
+    private $details;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(User $new_user)
+    public function __construct($details)
     {
-        $this->user = $user;
+        $this->details = $details;
     }
 
     public function via($notifiable)
@@ -39,8 +39,10 @@ class NewUser extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('New user has registered with email ' . $this->user->email)
-            ->action('Approve user', route('admin.users.approve', $this->user->id));
+                    ->greeting($this->details['greeting'])
+                    ->line($this->details['body'])
+                    ->action($this->details['actionText'], $this->details['actionURL'])
+                    ->line($this->details['thanks']);
     }
 
 }
