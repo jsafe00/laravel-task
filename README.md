@@ -1,10 +1,10 @@
-A pure laravel application that glues some of the built in laravel functions. 
-	Login authentication
-	Registration
-	Forgot password with email notification
-	Admin/Approve user
-	Upload Image
-	ToDo list with CRUD functionality
+A pure laravel application that glues some of the built in laravel functions. <br>
+	Login authentication <br>
+	Registration <br>
+	Forgot password with email notification <br>
+	Admin/Approve user <br>
+	Upload Image <br>
+	ToDo list with CRUD functionality <br>
 
 It might not be that much, but I know it can certainly help someone out there. Feel free to enhance this. 
 
