@@ -5,8 +5,8 @@ A pure laravel application that joins some of the built in laravel features. <br
 	Admin/Approve user <br>
 	Upload Image <br>
 	ToDo list with CRUD functionality <br>
-	Account Lockout when user enter incorrect login data for 3 consecutive try. <br>
-	Update Password in Profile Page with sometimes validatin <br>
+	Account Lockout if 3 consecutive incorrect login data <br>
+	Update data in Profile Page with sometimes validation <br>
 
 It might not be that much, but I know it can certainly help someone out there. Feel free to enhance this or suggest what needs to be improved. 
 
