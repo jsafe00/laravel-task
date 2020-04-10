@@ -1,4 +1,4 @@
-A pure laravel application that joins some of the built in laravel functions. <br>
+A pure laravel application that joins some of the built in laravel features. <br>
 	Login authentication <br>
 	Registration <br>
 	Forgot password with email notification <br>
